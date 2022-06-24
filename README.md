@@ -1,19 +1,5 @@
 # Morphing Page Transition
 
-A page transition where one SVG path is morphed into another.
-
-![Morphing Page Transition](https://tympanus.net/codrops/wp-content/uploads/2017/08/MorphingPageTransition_Featured.jpg)
-
-[Article on Codrops](https://tympanus.net/codrops/?p=31976)
-
-[Demo](https://tympanus.net/Development/MorphingPageTransition/)
-
-This demo is kindly sponsored by [PageCloud](https://goo.gl/rdSoMC), the website builder you'll love to use.
-
-## Credits
-
-- [anime.js](http://anime-js.com/) by Julian Garnier
-- Images by [Unsplash.com](http://unsplash.com)
 - [Charming.js](https://github.com/yuanqing/charming) by Yuan Qing
 - [imagesLoaded](http://imagesloaded.desandro.com/) by Dave DeSandro
 - [Black Grunge set](http://www.freepik.com/free-vector/black-grunge-set_1165653.htm) by Freepik
