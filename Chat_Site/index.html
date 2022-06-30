@@ -1,16 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form id = "Name">
-        <input type="text" name="name">
-    </form>
-    <h1></h1>
-    <script src="index.js"></script>
-</body>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Morphing Page Transition | Demo 1 | Codrops</title>
+		<meta name="description" content="A page transition where one SVG path is morphed into another" />
+		<meta name="keywords" content="page transition, svg, morph, path, javascript, web design, web dev" />
+		<meta name="author" content="Codrops"/>	
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Spectral:200" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="../pater/pater.css" />
+		<link rel="stylesheet" type="text/css" href="../css/set1.css" />
+		<link rel="stylesheet" type="text/css" href="../css/menu_sideslide.css" />
+		<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+        <script type="module">
+
+        const firebaseConfig = {
+        apiKey: "AIzaSyAule2yOMK_5sGSl-3cboqkTpP4rs6fCEI",
+        authDomain: "dongchart-4c6e 5.firebaseapp.com",
+        projectId: "dongchart-4c6e5",
+        storageBucket: "dongchart-4c6e5.appspot.com",
+        messagingSenderId: "944290931537",
+        appId: "1:944290931537:web:f9df4a7683e88a102ce970",
+        measurementId: "G-LTKY2FRXGQ"
+        };
+        if(!firebase.apps.length){
+            firebase.initializeApp(firebaseConfig);
+        } else {
+            firebase.app();
+        }
+
+        const authService = firebase.auth();
+        const dbService = firebase.firestore();
+        let ref = dbService.collection('Chat');
+        ref.doc('Data').get().then(async (snap)=>{
+            const data =snap.data();
+            let Chat_Log =document.querySelector('#Chat_Log');
+            var button = document.getElementById("button");
+            const form = document.querySelector("form");
+            let name;
+            form.addEventListener("submit",(e)=>{
+                e.preventDefault();
+                name = e.target.name.value;
+                e.target.name.value=""
+                localStorage.setItem("name", name);
+            })
+            name = localStorage.getItem("name");
+            button.onclick = function(){
+                console.log(name);
+                console.log(data);                
+                ref.doc('Data').update(data);
+            }
+            document.querySelector("h1").innerHTML = name;
+            var i =0;
+            while(i < data.length){
+                Chat_Log.innerHTML += "<div>"+data.data[i]+"</div>";
+                i++
+            }
+        });
+        </script>
+		<script>document.documentElement.className = 'js';</script>
+	</head>
+	<body>
+		<main>
+			<div class="menu-wrap">
+				<nav class="menu">
+					<div class="icon-list">
+						<a href="#"><i class="fa fa-fw fa-bell-o"></i><span>Alerts</span></a>
+						<a href="#"><i class="fa fa-fw fa-comment-o"></i><span>Comments</span></a>
+						<a href="#"><i class="fa fa-fw fa-bar-chart-o"></i><span>Chart</span></a>
+						<a href="../News/index.html"><i class="fa fa-fw fa-newspaper-o"></i><span>NewsPaper</span></a>
+					</div>
+				</nav>
+				<button class="close-button" id="close-button">Close Menu</button>
+			</div>
+			<button class="menu-button" id="open-button">Open Menu</button>
+			<div
+            id="Chat_Log"
+            style="
+            position: absolute;
+            top: 200px;
+            left: 1000px;
+            width: 200px;
+            height: 250px;
+            border: 2px solid black;
+            transform: translate(-50%);
+            overflow: auto;
+            "
+            >
+
+            </div>
+            <form id = "kk">
+                <input type="text" name="name">
+            </form>
+            <button id = "button"></button>
+            <h1></h1>
+			<script src="../js/classie.js"></script>
+			<script src="../js/main.js"></script>
+			<script src="../js/imagesloaded.pkgd.min.js"></script>
+			<script src="../js/charming.min.js"></script>
+			<script src="../js/anime.min.js"></script>
+		</main>
+	</body>
 </html>
+
