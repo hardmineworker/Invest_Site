@@ -42,7 +42,7 @@
         const dbService = firebase.firestore();
         let ref = dbService.collection('Chat');
         ref.doc('Data').get().then(async (snap)=>{
-            const data =snap.data();
+            const data = snap.data();
             let Chat_Log =document.querySelector('#Chat_Log');
             var button = document.getElementById("button");
             const form = document.querySelector("form");
@@ -52,16 +52,15 @@
                 name = e.target.name.value;
                 e.target.name.value=""
                 localStorage.setItem("name", name);
+                data.data.push(name)                
+                ref.doc('Data').update(data);
             })
             name = localStorage.getItem("name");
             button.onclick = function(){
-                console.log(name);
-                console.log(data);                
-                ref.doc('Data').update(data);
             }
             document.querySelector("h1").innerHTML = name;
             var i =0;
-            while(i < data.length){
+            while(i < data.data.length){
                 Chat_Log.innerHTML += "<div>"+data.data[i]+"</div>";
                 i++
             }
