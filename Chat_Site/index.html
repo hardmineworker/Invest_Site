@@ -37,13 +37,14 @@
         } else {
             firebase.app();
         }
-
+        
         const authService = firebase.auth();
         const dbService = firebase.firestore();
         let ref = dbService.collection('Chat');
         ref.doc('Data').get().then(async (snap)=>{
             const data = snap.data();
-            let Chat_Log =document.querySelector('#Chat_Log');
+            var canvas = document.getElementById("Chat_Log");
+            var context = canvas.getContext("2d");
             var button = document.getElementById("button");
             const form = document.querySelector("form");
             let name;
@@ -61,7 +62,9 @@
             document.querySelector("h1").innerHTML = name;
             var i =0;
             while(i < data.data.length){
-                Chat_Log.innerHTML += "<div>"+data.data[i]+"</div>";
+                console.log(i);
+                context.fillStyle = "rgb(250, 100, 100)";
+                context.fillText(data.data[i], 50, 100+i*20);
                 i++
             }
         });
@@ -82,21 +85,7 @@
 				<button class="close-button" id="close-button">Close Menu</button>
 			</div>
 			<button class="menu-button" id="open-button">Open Menu</button>
-			<div
-            id="Chat_Log"
-            style="
-            position: absolute;
-            top: 200px;
-            left: 1000px;
-            width: 200px;
-            height: 250px;
-            border: 2px solid black;
-            transform: translate(-50%);
-            overflow: auto;
-            "
-            >
-
-            </div>
+			<canvas id="Chat_Log" width = "640" height = "400" ></canvas>
             <form id = "kk">
                 <input type="text" name="name">
             </form>
