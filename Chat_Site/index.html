@@ -45,7 +45,6 @@
             const data = snap.data();
             var canvas = document.getElementById("Chat_Log");
             var context = canvas.getContext("2d");
-            var button = document.getElementById("button");
             const form = document.querySelector("form");
             let name;
             form.addEventListener("submit",(e)=>{
@@ -57,8 +56,6 @@
                 ref.doc('Data').update(data);
             })
             name = localStorage.getItem("name");
-            button.onclick = function(){
-            }
             document.querySelector("h1").innerHTML = name;
             var i =0;
             while(i < data.data.length){
@@ -84,13 +81,12 @@
 				</nav>
 				<button class="close-button" id="close-button">Close Menu</button>
 			</div>
-			<button class="menu-button" id="open-button">Open Menu</button>
-			<canvas id="Chat_Log" width = "640" height = "400" ></canvas>
             <form id = "kk">
                 <input type="text" name="name">
             </form>
             <button id = "button"></button>
             <h1></h1>
+			<canvas id="Chat_Log" width = "640" height = "400" ></canvas>
 			<script src="../js/classie.js"></script>
 			<script src="../js/main.js"></script>
 			<script src="../js/imagesloaded.pkgd.min.js"></script>
