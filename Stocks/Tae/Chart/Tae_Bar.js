@@ -7,7 +7,7 @@ var ctx = document.getElementById("Tae_Bar");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["기업가치", "주가성장세", "March", "April", "May", "June"],
     datasets: [{
       label: "Revenue",
       backgroundColor: "rgba(2,117,216,1)",
