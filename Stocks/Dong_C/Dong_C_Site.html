@@ -9,14 +9,16 @@
     <title>실시간 차트 - SB Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Spectral:200" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../../css/menu_sideslide.css" />
+	<link rel="stylesheet" type="text/css" href="../../fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
-        <script type="module">
-
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script type="module">
         const firebaseConfig = {
         apiKey: "AIzaSyAule2yOMK_5sGSl-3cboqkTpP4rs6fCEI",
         authDomain: "dongchart-4c6e 5.firebaseapp.com",
@@ -43,45 +45,21 @@
                 }   
                 setInterval(update, 1000);
         });
-        </script>
+    </script>
 </head>
+<div class="menu-wrap">
+    <nav class="menu">
+        <div class="icon-list">
+            <a href="../../Chat_Site/index.html"><i class="fas fa-comment"></i><span>채팅</span></a>
+            <a href="../../copy.html"><i class="fas fa-align-justify"></i><span>종목</span></a>
+            <a href="../../News/index.html"><i class="fas fa-book-open"></i></i><span>신문</span></a>
+        </div>
+    </nav>
+    <button class="close-button" id="close-button">Close Menu</button>
+</div>
+<button class="menu-button" id="open-button">Open Menu</button>
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="../../index.html">종오증권</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-        </nav>
         <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <a class="nav-link" href="../../copy.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-align-justify"></i></div>
-                                종목
-                            </a>
-                            <a class="nav-link" href="../../copy.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-comment"></i></div>
-                                채팅
-                            </a>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                정보
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="../../News/Lie/index.html">이종원의 일기</a>
-                                    <a class="nav-link" href="../../News/Bak/index.html">박선우의 성경</a>
-                                    <a class="nav-link" href="../../News/Kim/index.html">김동현의 게임북</a>
-                                    <a class="nav-link" href="../../News/Sin/index.html">신형우의 문제집</a>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
@@ -122,8 +100,13 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="Chart/Dong_C_Bar.js"></script>
-        <script src="Chart/Dong_C_Pie.js"></script>
+        <script src="../../Chart/Dong_C_Bar.js"></script>
+        <script src="../../Chart/Dong_C_Pie.js"></script>
+        <script src="../../js/classie.js"></script>
+		<script src="../../js/main.js"></script>
+		<script src="../../js/imagesloaded.pkgd.min.js"></script>
+		<script src="../../js/charming.min.js"></script>
+		<script src="../../js/anime.min.js"></script>
         
     </body>
 </html>

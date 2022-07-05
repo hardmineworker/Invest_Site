@@ -11405,7 +11405,7 @@ body {
   overflow-y: auto;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
-  padding-left: 225px;
+  padding-left: 60px;
   top: 56px;
 }
 

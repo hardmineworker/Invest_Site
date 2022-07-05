@@ -112,7 +112,7 @@ body,
 .menu-wrap {
 	position: absolute;
 	z-index: 1001;
-	width: 300px;
+	width: 250px;
 	height: 100%;
 	background: #3c414a;
 	padding: 2.5em 1.5em 0;
