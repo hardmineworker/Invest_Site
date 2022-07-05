@@ -82,7 +82,29 @@
             </div>
             <div id="layoutSidenav_content">
                 <div class="wrapper">
-                    <div class="content"><u-chat room='sdjafl' style="display:inline-block; width:500px; height:500px;"></u-chat></div>
+                    <div class="content"><?php
+                        if(!function_exists('uchat_array2data')) {
+                            function uchat_array2data($arr) {
+                                $arr['time'] = time();
+                                ksort($arr);
+                                $arr = array_filter($arr);
+                                $arr['hash'] = md5(implode($arr['token'], $arr));
+                                unset($arr['token']);
+                                foreach ($arr as $k => &$v){ $v = $k.' '.urlencode($v); }
+                                return implode("|", $arr);
+                            }
+                        }
+                        $joinData = array();
+                        $joinData['room'] = 'sdjafl';
+                        $joinData['token'] = 'd884216462365855c1f61d1cb467bbb5'; //!!!!!!!!!!!!!!!!절대 유출 금지!!!!!!!!!!!!!!
+                        $joinData['nick'] = $닉네임변수;
+                        $joinData['id'] = $아이디변수;
+                        $joinData['level'] = $레벨변수;
+                        $joinData['auth'] = ''; // (admin, subadmin, member, guest)중 하나선택, 미선택시 자동(권장)
+                        $joinData['icons'] = $아이콘주소변수;
+                        ?>
+                        <script async src="//client.uchat.io/uchat.js"></script>
+                        <u-chat room='<?php echo $joinData['room'];?>' user_data='<?php echo uchat_array2data($joinData); ?>' style="display:inline-block; width:800px; height:600px;"></u-chat></div>
                 </div>
             </div>
         </div>
