@@ -7,12 +7,12 @@ var ctx = document.getElementById("Sam_Bar");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["투명성", "수익성", "도박성", "환경보호성"],
     datasets: [{
       label: "Revenue",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [41, 7841, 9821, 14984],
+      data: [8000, 12000, 7000, 3000],
     }],
   },
   options: {

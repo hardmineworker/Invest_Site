@@ -7,12 +7,12 @@ var ctx = document.getElementById("Tae_Bar");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["기업가치", "주가성장세", "March", "April", "May", "June"],
+    labels: ["투명성", "수익성", "도박성", "환경보호성"],
     datasets: [{
       label: "Revenue",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [7000, 11000, 8000, 8000],
     }],
   },
   options: {
