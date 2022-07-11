@@ -5,6 +5,58 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+        <script type="module">
+
+        const firebaseConfig = {
+        apiKey: "AIzaSyAule2yOMK_5sGSl-3cboqkTpP4rs6fCEI",
+        authDomain: "dongchart-4c6e 5.firebaseapp.com",
+        projectId: "dongchart-4c6e5",
+        storageBucket: "dongchart-4c6e5.appspot.com",
+        messagingSenderId: "944290931537",
+        appId: "1:944290931537:web:f9df4a7683e88a102ce970",
+        measurementId: "G-LTKY2FRXGQ"
+        };
+        if(!firebase.apps.length){
+            firebase.initializeApp(firebaseConfig);
+        } else {
+            firebase.app();
+        }
+
+        const authService = firebase.auth();
+        const dbService = firebase.firestore();
+        let ref = dbService.collection('News');
+        ref.doc('Paper').get().then(async (snap)=>{
+			var news = snap.data().news;
+			var i = 0;
+			var p = -1;
+			console.log(Object.keys(news).length)
+			while(i < Object.keys(news).length){
+				if(i < Object.keys(news).length){
+					i++
+					p++
+					document.getElementById("RL1").innerHTML += "<div><a href='https://google.com'> <img src='images/thumbs/"+i+".jpg' /><h3 >"+news[Object.keys(news)[p]][0]+"</h3></a></div>"
+				}
+				if(i < Object.keys(news).length){
+					i++
+					p++
+					document.getElementById("RL2").innerHTML += "<div><a> <img src='images/thumbs/"+i+".jpg' onclick='location.href='Rp"+i+"/index.html''/><h3 >"+news[Object.keys(news)[p]][0]+"</h3></a></div>"
+				}
+				if(i < Object.keys(news).length){
+					i++
+					p++
+					document.getElementById("RL3").innerHTML += "<div><a> <img src='images/thumbs/"+i+".jpg' onclick='location.href='Rp"+i+"/index.html''/><h3 >"+news[Object.keys(news)[p]][0]+"</h3></a></div>"
+				}
+			}
+			
+
+			ref.doc('Paper').update({news});
+        });
+        </script>
 	</head>
 	<body>
 			<div id="wrapper">
@@ -17,35 +69,11 @@
 					</header>
 					<section id="main">
 							<section class="thumbnails">
-								<div>
-									<a>
-										<img src="images/thumbs/01.jpg" onclick="location.href='Rp1/index.html'"/>
-										<h3 >5SG</h3>
-									</a>
-									<a>
-										<img src="images/thumbs/02.jpg" onclick="location.href='Rp2/index.html'" />
-										<h3>한지신문</h3>
-									</a>
+								<div id = "RL1">
 								</div>
-								<div>
-									<a>
-										<img src="images/thumbs/03.jpg" onclick="location.href='Rp3/index.html'" />
-										<h3>천안YSJ</h3>
-									</a>
-									<a>
-										<img src="images/thumbs/04.jpg" onclick="location.href='Rp4/index.html'" />
-										<h3>규현일보</h3>
-									</a>
+								<div id = "RL2">
 								</div>
-								<div>
-									<a>
-										<img src="images/thumbs/05.jpg" onclick="location.href='Rp5/index.html'"/>
-										<h3>한별나라</h3>
-									</a>
-									<a>
-										<img src="images/thumbs/06.jpg" onclick="location.href='Rp6/index.html'"/>
-										<h3>기자6</h3>
-									</a>
+								<div id = "RL3">
 								</div>
 							</section>
 
