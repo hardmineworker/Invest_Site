@@ -10,12 +10,58 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+        <script type="module">
+
+        const firebaseConfig = {
+        apiKey: "AIzaSyAule2yOMK_5sGSl-3cboqkTpP4rs6fCEI",
+        authDomain: "dongchart-4c6e 5.firebaseapp.com",
+        projectId: "dongchart-4c6e5",
+        storageBucket: "dongchart-4c6e5.appspot.com",
+        messagingSenderId: "944290931537",
+        appId: "1:944290931537:web:f9df4a7683e88a102ce970",
+        measurementId: "G-LTKY2FRXGQ"
+        };
+        if(!firebase.apps.length){
+            firebase.initializeApp(firebaseConfig);
+        } else {
+            firebase.app();
+        }
+
+        const authService = firebase.auth();
+        const dbService = firebase.firestore();
+        let ref = dbService.collection('News');
+        ref.doc('Paper').get().then(async (snap)=>{
+            let i=6;
+            let k =1;
+			var news = snap.data().news;
+            var Ti = news["N"+i][0];
+            var Fp = news["N"+i][1];
+            var Lp = news["N"+i][2];
+            console.log(Ti);
+			document.getElementById("Ti").innerHTML = "<h1 class='fw-bolder mb-1' id = 'Ti'>"+Ti+"</h1>"
+            document.getElementById("Fp").innerHTML = Fp;
+            document.getElementById("Lp").innerHTML = Lp;
+            for(k = 1; k <= Object.keys(news).length; k++){
+                if(Number.isInteger(Object.keys(news).length/6)){
+                    document.getElementById("NewsZ").innerHTML = "<div class='card-body' id = 'NewsZ'></div>" 
+                }else{
+                    document.getElementById("NewsZ").innerHTML += "<div class='card-body' id = 'NewsZ'>"+news["N"+k][0]+"</div>" 
+                }
+            }
+			ref.doc('Paper').update({news});
+        });
+        </script>
     </head>
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="../../index.html">대건증권</a>
+                <a class="navbar-brand" href="../../index.html">종오증권</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             </div>
         </nav>
@@ -23,57 +69,31 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-lg-8">
-                    <!-- Post content-->
                     <article>
-                        <!-- Post header-->
                         <header class="mb-4">
-                            <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">"공력계수 불과 0.21"…아이오닉6, 최고 전기차 성능 입증</h1>
-                        </header>
-                        <figure class="mb-4"><img class="img-fluid rounded" src="https://biz.chosun.com/resizer/7U-uU7gV58IdEYiQxgUOReuL0PY=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosunbiz/3UVH3VBUBNBSXGGPPIJHASHUYA.jpg" alt="..." /></figure>
+                            <h1 class="fw-bolder mb-1" id = "Ti"></h1>
+                            </header>
+                        <figure class="mb-4"><img class="img-fluid rounded" src="https://www.nhis.or.kr/magazin/151/html/style/images/sub3_img1.jpg" alt="..." /></figure>
                         <section class="mb-5">
-                            <p class="fs-5 mb-4">아이오닉 6가 우수한 차량 성능을 입증했다.
-                            <p class="fs-5 mb-4">동현대차는 6일 아이오닉 6가 지금까지 출시한 현대차 역대 모델 중 최저 공력계수인 CD(Drag Coefficient) 0.21를 달성했다고 밝혔다. 자동차의 공력계수는 제품 경쟁력을 평가하는 중요 지표 중 하나로 꼽히는데 특히 전기차 시대로 넘어오면서 1회 충전으로 더 나은 주행거리를 확보하기 위한 경쟁이 치열해짐에 따라 공력계수는 더욱 중요해지는 추세다.</p>
-                            <p class="fs-5 mb-4">아이오닉 6가 달성한 공력계수 0.21은 현존하는 전기차 중 최상위권에 속하는 수준이라고 현대차는 설명했다.</p>
-                            <h2 class="fw-bolder mb-4 mt-5">동현대 자동차의 기술력!</h2>
-                            <p class="fs-5 mb-4">깔끔하고 감각적인 실루엣을 기반으로 속도를 더 빠르게 증가시켜주는 기본 부품들과 차량 주변의 공기 흐름을 유연하게 만들어주는 다양한 장비들이 탑재됐었다 </p>
-                            <p class="fs-5 mb-4">동현대자동차 관계자는 "아이오닉 6는 전기차의 단점을 보완하기 위해 여러 장비들을 장착시킨 연구원들의 창의적인 아이디어를 접목한 기능적 설계(Functional design)에 주안점을 두고 개발한 결과 현대차 역대 모델 중 최저 공력계수를 달성할 수 있었다"고 말했다.</p>
+                            <p class="fs-5 mb-4" id = "Fp"></p>
+                            <p class="fs-5 mb-4" id = "Lp"></p>
                         </section>
                     </article>
-                    <!-- Comments section-->
-                    <section class="mb-5">
-                    </section>
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
-                    <div class="card mb-4">
-                        <div class="card-header" onclick="location.href='../index.html'"><li>News</li></div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="../Rp1/index.html">5SG</a></li>
-                                        <li><a href="../Rp2/index.html">한지신문</a></li>
-                                        <li><a href="../Rp3/index.html">천안YSJ</a></li>
-
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="../Rp4/index.html">규현일보</a></li>
-                                        <li><a href="../Rp5/index.html">한별나라</a></li>
-                                        <li><a href="../Rp6/index.html">기자6</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <a href="../index.html">
+                        <div class="card mb-4" >
+                        <div class="card-header" >신문가기</div>
+                        <div class="card-body" id = "NewsZ"></div>
                     </div>
+                </a>    
                 </div>
             </div>
         </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">기자6 &copy;</p></div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

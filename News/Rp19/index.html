@@ -36,7 +36,7 @@
         const dbService = firebase.firestore();
         let ref = dbService.collection('News');
         ref.doc('Paper').get().then(async (snap)=>{
-            let i=4;
+            let i=19;
             let k =1;
 			var news = snap.data().news;
             var Ti = news["N"+i][0];
