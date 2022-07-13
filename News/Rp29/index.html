@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Blog Post - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+        <script type="module">
+
+        const firebaseConfig = {
+        apiKey: "AIzaSyAule2yOMK_5sGSl-3cboqkTpP4rs6fCEI",
+        authDomain: "dongchart-4c6e 5.firebaseapp.com",
+        projectId: "dongchart-4c6e5",
+        storageBucket: "dongchart-4c6e5.appspot.com",
+        messagingSenderId: "944290931537",
+        appId: "1:944290931537:web:f9df4a7683e88a102ce970",
+        measurementId: "G-LTKY2FRXGQ"
+        };
+        if(!firebase.apps.length){
+            firebase.initializeApp(firebaseConfig);
+        } else {
+            firebase.app();
+        }
+
+        const authService = firebase.auth();
+        const dbService = firebase.firestore();
+        let ref = dbService.collection('News');
+        ref.doc('Paper').get().then(async (snap)=>{
+            let i=29;
+            let k =1;
+			var news = snap.data().news;
+            var Ti = news["N"+i][0];
+            var Fp = news["N"+i][1];
+            var Lp = news["N"+i][2];
+            console.log(Ti);
+			document.getElementById("Ti").innerHTML = "<h1 class='fw-bolder mb-1' id = 'Ti'>"+Ti+"</h1>"
+            document.getElementById("Fp").innerHTML = Fp;
+            document.getElementById("Lp").innerHTML = Lp;
+            for(k = 1; k <= Object.keys(news).length; k++){
+                if(Number.isInteger(Object.keys(news).length/6)){
+                    document.getElementById("NewsZ").innerHTML = "<div class='card-body' id = 'NewsZ'></div>" 
+                }else{
+                    document.getElementById("NewsZ").innerHTML += "<div class='card-body' id = 'NewsZ'>"+news["N"+k][0]+"</div>" 
+                }
+            }
+			ref.doc('Paper').update({news});
+        });
+        </script>
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="../../index.html">종오증권</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <article>
+                        <header class="mb-4">
+                            <h1 class="fw-bolder mb-1" id = "Ti"></h1>
+                            </header>
+                        <section class="mb-5">
+                            <p class="fs-5 mb-4" id = "Fp"></p>
+                            <p class="fs-5 mb-4" id = "Lp"></p>
+                        </section>
+                    </article>
+                </div>
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <a href="../index.html">
+                        <div class="card mb-4" >
+                        <div class="card-header" >신문가기</div>
+                        <div class="card-body" id = "NewsZ"></div>
+                    </div>
+                </a>    
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
